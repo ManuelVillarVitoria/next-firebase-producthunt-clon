@@ -1,16 +1,14 @@
-import React from 'react'
+import React from 'react';
+import styled from '@emotion/styled';
+
+const Heading = styled.h1 `
+  color: red;
+`;
 
 const Home = () => {
   return (
     <div>
-      <h1>Inicio</h1>
-
-      <style jsx>{`
-        h1 {
-          color: red;
-        }
-      `}</style>
-      
+      <Heading>Inicio</Heading>
     </div>
   )
 }
