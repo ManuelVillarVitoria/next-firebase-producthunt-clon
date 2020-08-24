@@ -3,7 +3,7 @@ import Header from './Header';
 import { Global, css } from '@emotion/core';
 import Head from 'next/head'
 
-const Layout = props => {
+const Layout = ({ children }) => {
 
     return (
         <>  
@@ -65,14 +65,13 @@ const Layout = props => {
                 crossorigin="anonymous" />
                 <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" 
                 rel="stylesheet" />
-                <link href="static/css/app.css" rel="stylesheet" />
+                <link href="static/styles/app.css" rel="stylesheet" />
             </Head>
               
             <Header />
 
             <main>
-               
-                {props.children} 
+                {children} 
             </main>
         </>
     )

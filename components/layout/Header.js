@@ -1,12 +1,14 @@
 import React from 'react'
 import Link from 'next/link';
-
-import Buscar from '../ui/Buscador'
-import Nav from './Nav'
-
 import styled from '@emotion/styled';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
+
+import Buscar from '../ui/Buscador'
+import Nav from './Nav'
+import Boton from '../../public/static/styles/Boton';
+
+
 
 const ContenedorHeader = styled.div`
     max-width: 1200px;
@@ -28,6 +30,9 @@ const Logo = styled.p`
 `
 
 const Header = () => {
+
+    const usuario = true;
+
     return (
         <header
             css={css`
@@ -46,12 +51,37 @@ const Header = () => {
                     <Nav />
                 </div>
 
-                <div>
-                    <p>Hola: Manuel</p>
-                    <button type="button">Cerrar Sesión</button>
+                <div
+                    css={css `
+                        display: flex;
+                        align-items:center;
+                    `}
+                >
+                   { usuario ? (
+                        <>
+                            <p
+                                css={css `
+                                    margin-right: 2rem;
+                                `}
+                            >Hola: Manuel</p>
+                            <Boton
+                                bgColor="true"
+                            >Cerrar Sesión</Boton>
+                        </>
 
-                    <Link href='/'><a>Login</a></Link>
-                    <Link href='/'><a>Crear Cuenta</a></Link>
+                   ) : (
+                       <>
+                            <Link href='/'>
+                                <Boton
+                                    bgColor="true"
+                                >Login</Boton>
+                            </Link>
+                            <Link href='/'>
+                                <Boton>Crear Cuenta</Boton>
+                            </Link>
+                       </>
+                   )}
+
                 </div>
             </ContenedorHeader>
         </header>
