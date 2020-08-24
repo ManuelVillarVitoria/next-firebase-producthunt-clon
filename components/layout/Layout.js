@@ -4,6 +4,7 @@ import { Global, css } from '@emotion/core';
 import Head from 'next/head'
 
 const Layout = props => {
+
     return (
         <>  
             <Global
@@ -11,6 +12,7 @@ const Layout = props => {
                     :root {
                         --gris: #3d3d3d;
                         --gris2: #6F6F6F;
+                        --gris3: #e1e1e1;
                         --naranja: #DA552F;
                     }
 
@@ -69,6 +71,7 @@ const Layout = props => {
             <Header />
 
             <main>
+               
                 {props.children} 
             </main>
         </>
