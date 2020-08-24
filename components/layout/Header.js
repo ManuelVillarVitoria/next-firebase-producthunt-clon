@@ -41,7 +41,12 @@ const Header = () => {
             `}
         >
             <ContenedorHeader>
-                <div>
+                <div
+                    css={css `
+                        display: flex;
+                        align-items:center;
+                    `}
+                >
                     <Link href="/">
                         <Logo>P</Logo>
                     </Link>
