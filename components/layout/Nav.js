@@ -21,9 +21,9 @@ const Navigation = styled.nav `
 const Nav = () => {
     return (
         <Navigation>
-            <Link href='/'>Inicio</Link>
-            <Link href='/'>Populares</Link>
-            <Link href='/'>Nuevo Producto</Link>
+            <Link href='/'><a>Inicio</a></Link>
+            <Link href='/populares'><a>Populares</a></Link>
+            <Link href='/nuevo-producto'><a>Nuevo Producto</a></Link>
         </Navigation>
     )
 }
