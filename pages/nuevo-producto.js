@@ -9,13 +9,13 @@ import { Form, Field, InputSubmit, Error } from '../public/static/styles/Form';
 import firebase from '../firebase';
 
 import useValidacion from '../hooks/useValidacion';
-import validarCrearCuenta from '../validacion/validarCrearCuenta';
+import validarCrearProducto from '../validacion/validarCrearProducto';
 
 
 const STATE_INICIAL = {
     nombre: '',
     empresa: '',
-    imagen: '',
+    //imagen: '',
     url: '',
     descripcion: ''
 }
@@ -25,9 +25,9 @@ const NuevoProducto = () => {
   const [ error, guardarError] = useState(false);
   
     const { valores, errores, handleSubmit, handleChange, handleBlur } = 
-    useValidacion(STATE_INICIAL, validarCrearCuenta, crearCuenta);
+    useValidacion(STATE_INICIAL, validarCrearProducto, crearCuenta);
   
-    const { nombre, empresa, imagen, url, descripcion } = valores;
+    const { nombre, empresa, url, descripcion } = valores;
   
     async function crearCuenta() {
     
@@ -79,7 +79,7 @@ const NuevoProducto = () => {
 
                           { errores.empresa && <Error>{errores.empresa}</Error> }
 
-                          <Field>
+                          {/*<Field>
                               <label htmlFor="imagen">Imagen</label>
                               <input 
                                   type="file"
@@ -91,13 +91,14 @@ const NuevoProducto = () => {
                               />
                           </Field>
 
-                          { errores.imagen && <Error>{errores.imagen}</Error> }
+                          { errores.imagen && <Error>{errores.imagen}</Error> }*/}
 
                           <Field>
                               <label htmlFor="url">URL</label>
                               <input 
                                   type="url"
                                   id="url"
+                                  placeholder="URL de tu producto"
                                   name="url"
                                   value={url}
                                   onChange={handleChange}
