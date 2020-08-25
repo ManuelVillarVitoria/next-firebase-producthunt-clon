@@ -6,7 +6,7 @@ import firebaseConfig from './config';
 class Firebase {
     constructor() {
         if(!app.apps.length) {
-            app.initializeApp(firebaseConfig)
+            app.initializeApp(firebaseConfig);
         }
         this.auth = app.auth();
     }
@@ -16,11 +16,11 @@ class Firebase {
         password);
 
         return await nuevoUsuario.user.updateProfile({
-            displayName: nombre
+            displayName : nombre,
         })
     }
 }
 
 const firebase = new Firebase();
-
 export default firebase;
+
