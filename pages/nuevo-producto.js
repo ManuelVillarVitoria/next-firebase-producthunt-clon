@@ -1,12 +1,12 @@
-import React, { useState} from 'react';
+import React, { useState, useContext } from 'react';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 import Layout from '../components/layout/Layout';
 import { Form, Field, InputSubmit, Error } from '../public/static/styles/Form';
 
-import firebase from '../firebase';
+import { firebaseContext, FirebaseContext } from '../firebase';
 
 import useValidacion from '../hooks/useValidacion';
 import validarCrearProducto from '../validacion/validarCrearProducto';
@@ -25,12 +25,31 @@ const NuevoProducto = () => {
   const [ error, guardarError] = useState(false);
   
     const { valores, errores, handleSubmit, handleChange, handleBlur } = 
-    useValidacion(STATE_INICIAL, validarCrearProducto, crearCuenta);
+    useValidacion(STATE_INICIAL, validarCrearProducto, crearProducto);
   
     const { nombre, empresa, url, descripcion } = valores;
-  
-    async function crearCuenta() {
     
+    const router = useRouter();
+
+    const { usuario, firebase } = useContext(FirebaseContext);
+
+    async function crearProducto() {
+      if(!usuario) {
+        return router.push('/login');
+      }
+
+      const producto =  {
+        nombre,
+        empresa,
+        url,
+        descripcion,
+        votos: 0, 
+        comentarios: [],
+        creado: Date.now()
+      }
+
+      firebase.db.collection('productos').add(producto);
+
     }
 
 
