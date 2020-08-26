@@ -38,7 +38,7 @@ const Producto = () => {
     const router = useRouter();
     const { query: { id }} = router;
 
-    const { firebase } = useContext(FirebaseContext);
+    const { firebase, usuario } = useContext(FirebaseContext);
 
     useEffect(()=> {
         if(id) {
@@ -80,19 +80,23 @@ const Producto = () => {
                             <Imagen src={urlImagen}/>
                             <p>{descripcion}</p>
 
-                            <h2>Agrega tu comentario</h2>
-                            <form>
-                                <Field>
-                                    <input
-                                        type="text"
-                                        name="mensaje"
-                                    />
-                                </Field>
-                                <InputSubmit
-                                    type="submit"
-                                    value="Agregar Comentario"
-                                />
-                            </form>
+                            { usuario && (
+                                <>
+                                    <h2>Agrega tu comentario</h2>
+                                    <form>
+                                        <Field>
+                                            <input
+                                                type="text"
+                                                name="mensaje"
+                                            />
+                                        </Field>
+                                        <InputSubmit
+                                            type="submit"
+                                            value="Agregar Comentario"
+                                        />
+                                    </form>
+                                </>
+                            )}
 
                             <h2 css={css `
                                 margin: 2rem 0;
@@ -119,7 +123,9 @@ const Producto = () => {
                                     text-align: center;
                                 `}>{votos} Votos</p>
 
-                                <Boton>Votar</Boton>
+                                 { usuario && (
+                                    <Boton>Votar</Boton>
+                                 )}
                             </div>
                         </aside>
                     </ContenedorProducto>
