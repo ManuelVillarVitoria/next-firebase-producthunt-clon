@@ -3,6 +3,7 @@ import { Producto, DescripcionProducto, Titulo, TextoDescripcion, Comentarios, I
 from '../../public/static/styles/DetallesProducto';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { es } from 'date-fns/locale';
+import Link from 'next/link'
 
 
 const DetallesProducto = ({producto}) => {
@@ -18,7 +19,9 @@ const DetallesProducto = ({producto}) => {
                 </div>
 
                 <div>
-                    <Titulo>{nombre}</Titulo>
+                    <Link href="/productos/[id]" as={`/productos/${id}`}>
+                        <Titulo>{nombre}</Titulo>
+                    </Link>
 
                     <TextoDescripcion>{descripcion}</TextoDescripcion>
 
