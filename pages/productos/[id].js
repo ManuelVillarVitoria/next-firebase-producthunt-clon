@@ -7,11 +7,13 @@ import { es } from 'date-fns/locale';
 import { css, jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 import { Field, InputSubmit } from '../../public/static/styles/Form';
+import Boton from '../../public/static/styles/Boton';
 
 import { FirebaseContext } from '../../firebase';
 
 import Layout from '../../components/layout/Layout';
 import Error404 from '../../components/layout/404';
+
 
 
 
@@ -103,7 +105,21 @@ const Producto = () => {
                         </div>
 
                         <aside>
-                        2
+                            <Boton
+                                target="_blank"
+                                bgColor= "true"
+                                href={url}
+                            >Visitar URL</Boton>
+
+                            <div css={css `
+                                margin-top: 5rem;
+                            `}>
+                                <p css={css `
+                                    text-align: center;
+                                `}>{votos} Votos</p>
+
+                                <Boton>Votar</Boton>
+                            </div>
                         </aside>
                     </ContenedorProducto>
                 </div>
