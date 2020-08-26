@@ -1,12 +1,9 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { Producto, DescripcionProducto, Titulo, TextoDescripcion, Comentarios, Imagen, Votos } 
+from '../../public/static/styles/DetallesProducto';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { es } from 'date-fns/locale';
 
-
-const Imagen = styled.img `
-    width: 200px;
-`;
 
 const DetallesProducto = ({producto}) => {
 
@@ -14,32 +11,34 @@ const DetallesProducto = ({producto}) => {
     = producto;
 
     return (
-        <li>
-            <div>
+        <Producto>
+            <DescripcionProducto>
                 <div>
                     <Imagen src={urlImagen} />
                 </div>
 
                 <div>
-                    <h1>{nombre}</h1>
+                    <Titulo>{nombre}</Titulo>
 
-                    <p>{descripcion}</p>
+                    <TextoDescripcion>{descripcion}</TextoDescripcion>
 
-                    <div>
-                        <img src="/static/img/comentario.png" />
-                        <p>{comentarios.length} Comentarios</p>
-                    </div>
+                    <Comentarios>
+                        <div>
+                            <img src="/static/img/comentario.png" />
+                            <p>{comentarios.length} Comentarios</p>
+                        </div>
+                    </Comentarios>
 
                     <p>Publicado hace: {formatDistanceToNow( new Date(creado), 
                     {locale: es} )}</p>
                 </div>
-            </div>
+            </DescripcionProducto>
 
-            <div>
+            <Votos>
                 <div> &#9650; </div>
                 <p>{votos}</p>
-            </div>
-        </li>
+            </Votos>
+        </Producto>
     )
 }
 
