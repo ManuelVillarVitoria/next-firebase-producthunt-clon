@@ -48,7 +48,6 @@ export const Comentarios = styled.div `
     img {
         width: 2rem;
         margin-right: 2rem;
-
     }
 
     p {
