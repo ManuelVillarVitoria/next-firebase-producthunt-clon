@@ -52,7 +52,11 @@ const NuevoProducto = () => {
           descripcion,
           votos: 0, 
           comentarios: [],
-          creado: Date.now()
+          creado: Date.now(), 
+          creador: {
+              id: usuario.uid,
+              nombre: usuario.displayName
+          }
         }
 
         firebase.db.collection('productos').add(producto);
