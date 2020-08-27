@@ -53,27 +53,32 @@ const Producto = () => {
             }
             obtenerProducto();
         }
-    }, [id]);
+    }, [id, producto]);
 
     if(Object.keys(producto).length === 0) return 'Cargando...';
 
     const {  comentarios, creado, descripcion, empresa, nombre, url, urlImagen, 
-    votos, creador } = producto;
+    votos, creador, haVotado } = producto;
 
     const VotarProducto = () => {
         if(!usuario) {
             return router.push('/login');
         }
-
         const nuevoTotal = votos + 1;
 
-        firebase.db.collection('productos').doc(id).update({ votos: nuevoTotal });
+        if( haVotado.includes(usuario.uid) ) return;
+
+        const nuevoHaVotado = [...haVotado, usuario.uid];
+
+        firebase.db.collection('productos').doc(id).update({ 
+            votos: nuevoTotal, 
+            haVotado: nuevoHaVotado 
+        });
 
         guardarProducto({
             ...producto,
             votos: nuevoTotal
         })
-
     }
 
 
