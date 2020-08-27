@@ -15,8 +15,6 @@ import Layout from '../../components/layout/Layout';
 import Error404 from '../../components/layout/404';
 
 
-
-
 const ContenedorProducto = styled.div `
     @media (min-width:768px) {
         display: grid;
@@ -27,6 +25,16 @@ const ContenedorProducto = styled.div `
 
 const Imagen = styled.img `
     max-width: 100%;
+`;
+
+const CreadorProducto = styled.p `
+    padding: .5rem 2rem; 
+    background-color: #DA552F;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
 `;
 
 
@@ -89,6 +97,12 @@ const Producto = () => {
         })
     }
 
+    const esCreador = id => {
+        if(creador.id == id) {
+            return true;
+        }
+    }
+
     const agregarComentario = e => {
         e.preventDefault();
 
@@ -110,7 +124,6 @@ const Producto = () => {
             comentarios: nuevosComentarios
         })
     }
-
 
     return (
         <Layout>
@@ -174,6 +187,8 @@ const Producto = () => {
                                                     {''} {comentario.usuarioNombre}
                                                 </span>
                                             </p>
+                                            { esCreador( comentario.usuarioId ) &&
+                                            <CreadorProducto>Es Creador</CreadorProducto> }
                                         </li>
                                     ))}
                                 </ul>
