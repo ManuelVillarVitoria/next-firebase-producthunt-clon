@@ -36,8 +36,6 @@ const Buscador = () => {
     const buscarProducto = e => {
         e.preventDefault();
 
-       //if(busqueda.trim() === '') return;
-
        Router.push({
            pathname: '/buscar', 
            query: { q: busqueda }
